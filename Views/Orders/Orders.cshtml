@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BookShop.Models.Order>
+
+<section class="h-100 h-custom">
+    <div class="container h-100 py-5">
+        @foreach (var order in Model)
+        {
+            <div class="order-container mb-5">
+                @{int id = order.OrderID + 455251;}
+                <h5>Order ID: @id  </h5>
+                <p><strong>Order Date:</strong> @order.OrderDate.ToString("d")</p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Book</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in order.OrderBooks)
+                            {
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="/@item.Book.ImgUrl" class="img-fluid rounded-3" style="width: 120px;" alt="@item.Book.Title">
+                                            <div class="ms-4">
+                                                <p>@item.Book.Title</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>@item.Quantity</td>
+                                    <td>$@item.UnitPrice</td>
+                                    <td>$@(item.UnitPrice * item.Quantity)</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="3">Total</th>
+                                <th>$@order.TotalPrice.ToString("N2")</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>
+</section>

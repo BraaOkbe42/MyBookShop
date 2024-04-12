@@ -1,0 +1,102 @@
+﻿@model TheCart
+<section class="h-100 h-custom">
+    <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="h5">Shopping Bag</th>
+                                <th scope="col">Delete</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.CartItems)
+                            {
+                                @if(item.Book.StockQuantity > 0){
+                                <tr>
+                                    <th scope="row">
+                                        <div class="d-flex align-items-center">
+                                            <img src="/@item.Book.ImgUrl" class="img-fluid rounded-3" style="width: 120px;" alt="Book">
+                                            <div class="flex-column ms-4">
+                                                <p class="mb-2">@item.Book.Title</p>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <td class="align-middle">
+                                        <form method="post" class="delete-form" action="/ShoppingCart/Remove" data-book-id="@item.BookID" style="display: inline;">
+                                            <input type="hidden" name="bookId" value="@item.BookID">
+                                            <button type="button" class="delete-btn" title="Delete">
+                                                <i class="material-icons">&#xE872;</i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td class="align-middle">
+                                        <form method="post" asp-action="UpdateCartItemQuantity" asp-controller="ShoppingCart">
+                                            <input type="hidden" name="currentQuantity" value="@item.Quantity">
+                                            <input type="hidden" name="productId" value="@item.BookID">
+                                            <button type="submit" class="btn btn-light btn-outline-secondary" style="width:40px; max-width:40px;" name="change" value="increase">+</button>
+                                            <input type="number" class="form-control text-center" style="width:100px" value="@item.Quantity" id="quantityInput" name="quantity" min="1" readonly>
+                                            <button type="submit" class="btn btn-light btn-outline-secondary" style="width:40px; max-width:40px" name="change" value="decrease">-</button>
+                                        </form>
+                                    </td>
+                                    <td class="align-middle">
+                                        @{
+                                            decimal itemtotal = item.Book.Price * item.Quantity;
+                                        }
+                                        <p class="mb-0" style="font-weight: 500;">@itemtotal.ToString("C")</p>
+                                    </td>
+                                    </tr>
+                                }
+                         
+                           
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="3">Total</th>
+                                @{
+                                    decimal total = 0;
+                                    foreach (var item in Model.CartItems)
+                                    {
+                                        if(item.Book.StockQuantity != 0)
+                                             total += item.Book.Price * item.Quantity;
+                                    }
+                                }
+                                <th>@total.ToString("C")</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                @{
+                    if (total > 0)
+                    {
+                        <div class="text-end mt-3">
+                            <form action="/ShoppingCart/Payment" method="post">
+                        <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+                             </form>
+                         </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $('.delete-btn').click(function (e) {
+        e.preventDefault();
+        var form = $(this).closest('form.delete-form');
+        var bookId = form.data('book-id');
+
+        form.attr('action', '/ShoppingCart/Remove');
+        form.submit();
+    });
+
+
+</script>
+
+

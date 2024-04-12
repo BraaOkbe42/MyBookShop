@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.0.1" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\Novels\1984.jpg" />
+    <None Include="wwwroot\Images\Novels\Beloved.jpg" />
+    <None Include="wwwroot\Images\Novels\Brave New World.jpg" />
+    <None Include="wwwroot\Images\Novels\Frankenstein.jpg" />
+    <None Include="wwwroot\Images\Novels\LordOfTheRings.jpg" />
+    <None Include="wwwroot\Images\Novels\OneHundredYearsOfSolitude.jpg" />
+    <None Include="wwwroot\Images\Novels\Pride&amp;Prejudice.jpg" />
+    <None Include="wwwroot\Images\Novels\The Catcher in the Rye.jpg" />
+    <None Include="wwwroot\Images\Novels\The Great Gatsby.jpg" />
+    <None Include="wwwroot\Images\Novels\To Kill a Mockingbird.jpg" />
+    <None Include="wwwroot\Images\Sceince\A Brief History of Time.jpg" />
+    <None Include="wwwroot\Images\Sceince\Charles Darwin%27s On The Origin Of Species by Sabina Radeva Hardcover _ Indigo Chapters.jpg" />
+    <None Include="wwwroot\Images\Sceince\Cosmos ebook by Carl Sagan - Rakuten Kobo.jpg" />
+    <None Include="wwwroot\Images\Sceince\Guns, Germs and Steel audiobook by Jared Diamond - Rakuten Kobo.jpg" />
+    <None Include="wwwroot\Images\Sceince\Richard Dawkins - The Selfish Gene.jpg" />
+    <None Include="wwwroot\Images\Sceince\Sapiens_ THE MULTI-MILLION COPY BESTSELLER.jpg" />
+    <None Include="wwwroot\Images\Sceince\Silent.jpg" />
+    <None Include="wwwroot\Images\Sceince\The Elegant Universe.jpg" />
+    <None Include="wwwroot\Images\Sceince\The Structure of Scientific Revolutions, 3d Ed….jpg" />
+    <None Include="wwwroot\Images\Soprts\ALifeTooShort.jpg" />
+    <None Include="wwwroot\Images\Soprts\Born to Run_ A Hidden Tribe, Superathletes, and the Greatest Race the World Has Never Seen.jpg" />
+    <None Include="wwwroot\Images\Soprts\Friday.jpg" />
+    <None Include="wwwroot\Images\Soprts\King.jpg" />
+    <None Include="wwwroot\Images\Soprts\Moneyball %282011%29.jpg" />
+    <None Include="wwwroot\Images\Soprts\Open_ An Autobiography.jpg" />
+    <None Include="wwwroot\Images\Soprts\SeaBiscuit.jpg" />
+    <None Include="wwwroot\Images\Soprts\The Boys in the Boat_ Nine Americans and Their Epic Quest for Gold at the 1936 Berlin Olympics.jpg" />
+    <None Include="wwwroot\Images\Soprts\WhenPride.jpg" />
+  </ItemGroup>
+
+</Project>

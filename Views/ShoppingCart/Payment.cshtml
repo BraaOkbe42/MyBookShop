@@ -1,0 +1,102 @@
+﻿@model BookShop.ViewModels.PaymentVM
+
+<div class="container p-0">
+    <div class="card px-4">
+        <div class="text-center mb-3 pb-2 mt-4">
+            <h4 style="color: #495057 ;">Payment</h4>
+        </div>        <form asp-controller="Payment" asp-action="ProcessPayment" method="post">
+            <!-- Payment Details -->
+            <div class="row gx-3">
+                <div class="col-12">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1">Card Holder Name</p>
+                        <input class="form-control mb-3" asp-for="Name" placeholder="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1">Card Number</p>
+                        <input class="form-control mb-3" asp-for="CardNumber" placeholder="1234 5678 435678">
+                        <span asp-validation-for="CardNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1">Expiry Date</p>
+                        <input class="form-control mb-3" asp-for="ExpiryDate" type="month">
+                        <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1">CVV/CVC</p>
+                        <input class="form-control mb-3 pt-2" asp-for="CVV" placeholder="***">
+                        <span asp-validation-for="CVV" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mb-3 pb-2 mt-4">
+                <h4 style="color: #495057 ;">Delivery Details</h4>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control mb-3" placeholder="First name" name="FirstName">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control mb-3" placeholder="Last name" name="LastName">
+                </div>
+            </div>
+            <input type="text" class="form-control mb-3" placeholder="City" name="City">
+            <input type="text" class="form-control mb-3" placeholder="Zip" name="Zip">
+            <input type="text" class="form-control mb-3" placeholder="Address" name="Address">
+            <input type="email" class="form-control mb-3" placeholder="Email" name="Email">
+
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary btn-rounded">Pay @Model.Total.ToString("C")</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@* @section Scripts {
+   
+
+} *@
+
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Initially disable the pay button
+            $('button[type="submit"]').prop('disabled', true);
+
+            // Function to check the required fields
+            function checkFormFields() {
+                let allFilled = true;
+                $('input').each(function () {
+                    if ($(this).val() === '' && $(this).attr('required') === 'required') {
+                        allFilled = false;
+                        return false;
+                    }
+                });
+
+                $('button[type="submit"]').prop('disabled', !allFilled);
+            }
+
+            // Check on each input event
+            $('input').on('input', function () {
+                checkFormFields();
+            });
+
+            // Initial check in case someone autofills
+            checkFormFields();
+        });
+    </script>
+}
